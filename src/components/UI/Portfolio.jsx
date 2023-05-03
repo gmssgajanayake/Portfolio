@@ -1,16 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import data from "../../assets/data/portfolioData.js"
 
-
-/*const [nextItems, setNextItems] = useState(6);
-const [portfolios, setPortfolios] = useState(data);
-*/
-const loadMoreHandler = () => {
-   /* setNextItems(prev => prev + 3);*/
-    console.log("wcwe")
-};
-
 export const Portfolio = () => {
+
+    const [nextItems, setNextItems] = useState(6);
+    const [portfolios, setPortfolios] = useState(data);
+    const [selectTab, setSelectTab] = useState('all');
+
+    const loadMoreHandler = () => {
+        setNextItems(prevState => prevState + 3);
+    }
+
+    useEffect(() => {
+        if (selectTab === "all") {
+            setPortfolios(data)
+        }
+        if (selectTab === "web-design") {
+            const filteredData = data.filter(item => item.category === "Web Design");
+            setPortfolios(filteredData);
+        }
+        if (selectTab === "ui/ux-design") {
+            const filteredData = data.filter(item => item.category === "UI/UX Design");
+            setPortfolios(filteredData);
+        }
+
+    }, [selectTab]);
+
     return (
         <section id={"portfolio"}>
             <div className="container">
@@ -21,15 +36,15 @@ export const Portfolio = () => {
                         </h3>
                     </div>
                     <div className="flex gap-3">
-                        <button
+                        <button onClick={()=>setSelectTab("all")}
                             className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
                             All
                         </button>
-                        <button
+                        <button onClick={()=>setSelectTab("web-design")}
                             className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
                             Web Design
                         </button>
-                        <button
+                        <button onClick={()=>setSelectTab("ui/ux-design")}
                             className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
                             UI/UX Design
                         </button>
@@ -37,11 +52,11 @@ export const Portfolio = () => {
                 </div>
                 <div className="flex items-center gap-4 mt-12 flex-wrap">
                     {
-                        /*portfolios?.slice(0, nextItems)?*/data.map((portfolio, index) => (
+                        portfolios?.slice(0, nextItems)?.map((portfolio, index) => (
                                 <div key={index}
                                      data-aos={"zoom-in"}
                                      data-aos-duration={"1200"}
-                                     data-aos-delay={portfolio.delayTime}
+                                     data-aos-delay={portfolio.delayTime - 50}
                                      className={"group max-w-full sm:w-[48.5%] lg:w-[32.2%] relative z-[1] "}>
                                     <figure>
                                         <img className={"rounded-[8px] shadow-lg"} src={portfolio.imgUrl} alt=""/>
@@ -61,10 +76,12 @@ export const Portfolio = () => {
                     }
                 </div>
                 <div className="mt-6 text-center">
-                    <button onClick={loadMoreHandler}
-                        className="rounded-[8px] py-2 px-4 text-white bg-headingColor tracking-wider hover:tracking-widest transition-[500] ease-in duration-200">
-                        Read More
-                    </button>
+                    {nextItems < portfolios.length && data.length > 6 && (
+                        <button onClick={loadMoreHandler}
+                                className="rounded-[8px] py-2 px-4 text-white bg-headingColor tracking-wider hover:tracking-widest transition-[500] ease-in duration-200">
+                            Load More
+                        </button>
+                    )}
                 </div>
             </div>
         </section>
