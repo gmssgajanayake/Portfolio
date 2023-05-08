@@ -1,8 +1,37 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 export const Header = () => {
+    const headerRef = useRef(null);
+    const menuRef = useRef(null);
+
+    const toggleMenu = () => menuRef.current.classList.toggle('show_menu');
+    const stickyHeaderFunc = () => {
+        window.addEventListener('scroll', () => {
+            document.body.scrollTop > 80 || document.documentElement.scrollTop > 80 ?
+                headerRef.current.classList.add('sticky_header') :
+                headerRef.current.classList.remove('sticky_header');
+        });
+    }
+
+    useEffect(()=>{
+        stickyHeaderFunc();
+        return window.removeEventListener('scroll',stickyHeaderFunc);
+    },[]);
+
+    const handleClick = e => {
+        e.preventDefault();
+
+        const targetAttr = e.target.getAttribute('href');
+        const location = document.querySelector(targetAttr).offsetTop;
+
+        window.scrollTo({
+            top:location-80,
+            left:0
+        });
+    }
+
     return (
-        <header className={"w-full h-[80px] flex items-center"}>
+        <header ref={headerRef} className={"w-full h-[80px] flex items-center"}>
             <div className={"container"}>
                 <div className={"flex items-center justify-between"}>
                     {/* ------------- Logo start-----------*/}
@@ -18,25 +47,25 @@ export const Header = () => {
                     </div>
                     {/* ------------- Logo end-----------*/}
                     {/* ------------- Menu start-----------*/}
-                    <div className="menu">
+                    <div className="menu" ref={menuRef} onClick={toggleMenu}>
                         <ul className={"flex items-center gap-10"}>
                             <li className={"hover:font-[500] hover:border-b hover:border-black ease-in duration-200"}>
-                                <a className={"text-smallTextColor font-[600]"} href="#about">
+                                <a onClick={handleClick} className={"text-smallTextColor font-[600]"} href="#about">
                                     About
                                 </a>
                             </li>
                             <li className={"hover:font-[500] hover:border-b hover:border-black ease-in duration-200"}>
-                                <a className={"text-smallTextColor font-[600]"} href="#services">
+                                <a onClick={handleClick} className={"text-smallTextColor font-[600]"} href="#services">
                                     Services
                                 </a>
                             </li>
                             <li className={"hover:font-[500] hover:border-b hover:border-black ease-in duration-200"}>
-                                <a className={"text-smallTextColor font-[600]"} href="#portfolio">
+                                <a onClick={handleClick} className={"text-smallTextColor font-[600]"} href="#portfolio">
                                     Portfolio
                                 </a>
                             </li>
                             <li className={"hover:font-[500] hover:border-b hover:border-black ease-in duration-200"}>
-                                <a className={"text-smallTextColor font-[600]"} href="#contact">
+                                <a onClick={handleClick} className={"text-smallTextColor font-[600]"} href="#contact">
                                     Contact
                                 </a>
                             </li>
@@ -52,7 +81,7 @@ export const Header = () => {
                     </div>
                     {/* ------------- Menu-right end-----------*/}
                     {/* ------------- Menu-mobile start-----------*/}
-                    <span className={"text-smallTextColor text-2xl cursor-pointer md:hidden"}>
+                    <span onClick={toggleMenu} className={"text-smallTextColor text-2xl cursor-pointer md:hidden"}>
                         <i className="ri-menu-line"></i>
                     </span>
                     {/* ------------- Menu-mobile end-----------*/}

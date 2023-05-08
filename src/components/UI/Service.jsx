@@ -6,7 +6,8 @@ import appImage from "../../assets/images/apps.png"
 
 export const Service = () => {
     return (
-        <section id={"services"}>
+        <section id={"services"} className="relative" >
+              <div className="absolute top-0 right-0 w-full h-full opacity-[0.15] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
             <div className="container lg:pt-5">
                 <div className="text-center">
                     <h2 className="text-headingColor font-[800] text-[2.4rem] mb-5">
@@ -19,21 +20,21 @@ export const Service = () => {
                     </p>
                 </div>
                 <div className="flex flex-col justify-center sm:py-12">
-                    <div className="w-full py-3 px-2 sm:max-w-xl sm:mx-auto sm:px-0">
+                    <div className="w-full px-2 py-3 sm:max-w-xl sm:mx-auto sm:px-0">
                         <div
-                            className="relative text-gray-700 antialiased text-sm font-semibold">
+                            className="relative text-sm antialiased font-semibold text-gray-700">
                             {/* Vertical line running through the middle */}
                             <div
-                                className="border-2 border-primaryColor hidden absolute w-1 sm:block bg-indigo-300 h-full left-1/2 transform -translate-x-1/2">
+                                className="absolute hidden w-1 h-full transform -translate-x-1/2 bg-indigo-300 border-2 border-primaryColor sm:block left-1/2">
 
                             </div>
                             {/* Left card */}
                             <div className="mt-6 sm:mt-0 sm:mb-12">
-                                <div className="flex items-center flex-col sm:flex-row">
-                                    <div className="flex justify-start w-full mx-auto items-center">
+                                <div className="flex flex-col items-center sm:flex-row">
+                                    <div className="flex items-center justify-start w-full mx-auto">
                                         <div className="w-full sm:w-1/2 sm:pr-8">
                                             <div data-aos={"fade-right"} data-aos-duration={"1200"}
-                                                 className="bg-white p-4 rounded shadow-lg group hover:bg-gradient-to-l from-violet-500 to-fuchsia-500 cursor-pointer ease-in duration-150">
+                                                 className="p-4 duration-150 ease-in bg-white rounded shadow-lg cursor-pointer group hover:bg-gradient-to-l from-violet-500 to-fuchsia-500">
                                                 <h3 className="text-primaryColor font-[700] mb-3 group-hover:text-white group-hover:font-[600] text-2xl">
                                                     Frontend Developer
                                                 </h3>
@@ -44,8 +45,7 @@ export const Service = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="rounded-full bg-primaryColor border-4 border-white w-10 h-10 absolute left-1/2
-                                     transform -translate-x-1/2 -translate-y-4 sm:translate-y-0  flex items-center justify-center">
+                                    <div className="absolute flex items-center justify-center w-10 h-10 transform -translate-x-1/2 -translate-y-4 border-4 border-white rounded-full bg-primaryColor left-1/2 sm:translate-y-0">
                                         <figure>
                                             <img src={frontendImage} alt=""/>
                                         </figure>
@@ -54,13 +54,13 @@ export const Service = () => {
                             </div>
                             {/* Right card */}
                             <div className="mt-6 sm:mt-0 sm:mb-12">
-                                <div className="flex items-center flex-col sm:flex-row">
-                                    <div className="flex justify-end w-full mx-auto items-center">
+                                <div className="flex flex-col items-center sm:flex-row">
+                                    <div className="flex items-center justify-end w-full mx-auto">
                                         <div className="w-full sm:w-1/2 sm:pl-8">
                                             <div data-aos={"fade-left"}
                                                  data-aos-delay={"50"}
                                                  data-aos-duration={"1300"}
-                                                 className="bg-white p-4 rounded shadow-lg group hover:bg-gradient-to-r from-violet-500 to-fuchsia-500 cursor-pointer ease-in duration-150">
+                                                 className="p-4 duration-150 ease-in bg-white rounded shadow-lg cursor-pointer group hover:bg-gradient-to-r from-violet-500 to-fuchsia-500">
                                                 <h3 className="text-primaryColor font-[700] mb-3 group-hover:text-white group-hover:font-[600] text-2xl">
                                                     Backend Developer
                                                 </h3>
@@ -71,8 +71,7 @@ export const Service = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="rounded-full bg-primaryColor border-4 border-white w-10 h-10 absolute left-1/2
-                                     transform -translate-x-1/2 -translate-y-4 sm:translate-y-0  flex items-center justify-center">
+                                    <div className="absolute flex items-center justify-center w-10 h-10 transform -translate-x-1/2 -translate-y-4 border-4 border-white rounded-full bg-primaryColor left-1/2 sm:translate-y-0">
                                         <figure>
                                             <img src={backendImage} alt=""/>
                                         </figure>
@@ -81,13 +80,13 @@ export const Service = () => {
                             </div>
                             {/* Left card */}
                             <div className="mt-6 sm:mt-0 sm:mb-12">
-                                <div className="flex items-center flex-col sm:flex-row">
-                                    <div className="flex justify-start w-full mx-auto items-center">
+                                <div className="flex flex-col items-center sm:flex-row">
+                                    <div className="flex items-center justify-start w-full mx-auto">
                                         <div className="w-full sm:w-1/2 sm:pr-8">
                                             <div data-aos={"fade-right"}
                                                  data-aos-delay={"100"}
                                                  data-aos-duration={"1400"}
-                                                 className="bg-white p-4 rounded shadow-lg group hover:bg-gradient-to-l from-violet-500 to-fuchsia-500 cursor-pointer ease-in duration-150">
+                                                 className="p-4 duration-150 ease-in bg-white rounded shadow-lg cursor-pointer group hover:bg-gradient-to-l from-violet-500 to-fuchsia-500">
                                                 <h3 className="text-primaryColor font-[700] mb-3 group-hover:text-white group-hover:font-[600] text-2xl">
                                                     UI/UX Design
                                                 </h3>
@@ -98,8 +97,7 @@ export const Service = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="rounded-full bg-primaryColor border-4 border-white w-10 h-10 absolute left-1/2
-                                     transform -translate-x-1/2 -translate-y-4 sm:translate-y-0  flex items-center justify-center">
+                                    <div className="absolute flex items-center justify-center w-10 h-10 transform -translate-x-1/2 -translate-y-4 border-4 border-white rounded-full bg-primaryColor left-1/2 sm:translate-y-0">
                                         <figure>
                                             <img src={UIImage} alt=""/>
                                         </figure>
@@ -108,13 +106,13 @@ export const Service = () => {
                             </div>
                             {/* Right card */}
                             <div className="mt-6 sm:mt-0 sm:mb-12">
-                                <div className="flex items-center flex-col sm:flex-row">
-                                    <div className="flex justify-end w-full mx-auto items-center">
+                                <div className="flex flex-col items-center sm:flex-row">
+                                    <div className="flex items-center justify-end w-full mx-auto">
                                         <div className="w-full sm:w-1/2 sm:pl-8">
                                             <div data-aos={"fade-left"}
                                                  data-aos-delay={"150"}
                                                  data-aos-duration={"1500"}
-                                                 className="bg-white p-4 rounded shadow-lg group hover:bg-gradient-to-r from-violet-500 to-fuchsia-500 cursor-pointer ease-in duration-150">
+                                                 className="p-4 duration-150 ease-in bg-white rounded shadow-lg cursor-pointer group hover:bg-gradient-to-r from-violet-500 to-fuchsia-500">
                                                 <h3 className="text-primaryColor font-[700] mb-3 group-hover:text-white group-hover:font-[600] text-2xl">
                                                     Apps Developer
                                                 </h3>
@@ -125,8 +123,7 @@ export const Service = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="rounded-full bg-primaryColor border-4 border-white w-10 h-10 absolute left-1/2
-                                     transform -translate-x-1/2 -translate-y-4 sm:translate-y-0  flex items-center justify-center">
+                                    <div className="absolute flex items-center justify-center w-10 h-10 transform -translate-x-1/2 -translate-y-4 border-4 border-white rounded-full bg-primaryColor left-1/2 sm:translate-y-0">
                                         <figure>
                                             <img src={appImage} alt=""/>
                                         </figure>

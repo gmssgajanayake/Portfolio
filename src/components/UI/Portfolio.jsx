@@ -1,15 +1,23 @@
 import React, {useEffect, useState} from "react";
 import data from "../../assets/data/portfolioData.js"
+import Modal from "./Modal.jsx";
 
 export const Portfolio = () => {
 
     const [nextItems, setNextItems] = useState(6);
     const [portfolios, setPortfolios] = useState(data);
     const [selectTab, setSelectTab] = useState('all');
+    const [showModal, setShowModal] = useState(false);
+    const [activeID, setActiveID] = useState(null);
 
     const loadMoreHandler = () => {
         setNextItems(prevState => prevState + 3);
-    }
+    };
+
+    const showModalHandler = id => {
+        setShowModal(true);
+        setActiveID(id);
+    };
 
     useEffect(() => {
         if (selectTab === "all") {
@@ -19,8 +27,8 @@ export const Portfolio = () => {
             const filteredData = data.filter(item => item.category === "Web Design");
             setPortfolios(filteredData);
         }
-        if (selectTab === "ui/ux-design") {
-            const filteredData = data.filter(item => item.category === "UI/UX Design");
+        if (selectTab === "ui-design") {
+            const filteredData = data.filter(item => item.category === "Ux");
             setPortfolios(filteredData);
         }
 
@@ -29,28 +37,28 @@ export const Portfolio = () => {
     return (
         <section id={"portfolio"}>
             <div className="container">
-                <div className="flex justify-between items-center flex-wrap">
+                <div className="flex flex-wrap items-center justify-between">
                     <div className="mb-7 sm:mb-0">
                         <h3 className="text-headingColor font-[700] text-[2rem]">
                             My recent projects
                         </h3>
                     </div>
                     <div className="flex gap-3">
-                        <button onClick={()=>setSelectTab("all")}
-                            className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
+                        <button onClick={() => setSelectTab("all")}
+                                className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
                             All
                         </button>
-                        <button onClick={()=>setSelectTab("web-design")}
-                            className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
+                        <button onClick={() => setSelectTab("web-design")}
+                                className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
                             Web Design
                         </button>
-                        <button onClick={()=>setSelectTab("ui/ux-design")}
-                            className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
+                        <button onClick={() => setSelectTab("ui-design")}
+                                className="hover:bg-smallTextColor hover:text-white hover:border-smallTextColor text-headingColor border border-headingColor px-4 py-2 rounded-[8px]">
                             UI/UX Design
                         </button>
                     </div>
                 </div>
-                <div className="flex items-center gap-4 mt-12 flex-wrap">
+                <div className="flex flex-wrap items-center gap-4 mt-12">
                     {
                         portfolios?.slice(0, nextItems)?.map((portfolio, index) => (
                                 <div key={index}
@@ -63,9 +71,9 @@ export const Portfolio = () => {
                                     </figure>
                                     <div
                                         className="w-full h-full bg-black bg-opacity-20 absolute top-0 left-0 z-[5] rounded-[8px] hidden group-hover:block transition">
-                                        <div className="w-full h-full flex items-center justify-center">
-                                            <button
-                                                className="tracking-wide bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-[8px] py-2 px-4">See
+                                        <div className="flex items-center justify-center w-full h-full">
+                                            <button onClick={() => showModalHandler(portfolio.id)}
+                                                    className="tracking-wide bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-[8px] py-2 px-4">See
                                                 Details
                                             </button>
                                         </div>
@@ -78,12 +86,15 @@ export const Portfolio = () => {
                 <div className="mt-6 text-center">
                     {nextItems < portfolios.length && data.length > 6 && (
                         <button onClick={loadMoreHandler}
-                                className="rounded-[8px] py-2 px-4 text-white bg-headingColor tracking-wider hover:tracking-widest transition-[500] ease-in duration-200">
+                                className="rounded-[8px] py-2 px-4 text-white bg-gray-800 tracking-wider hover:tracking-widest transition-[500] ease-in duration-200">
                             Load More
                         </button>
                     )}
                 </div>
             </div>
+            {
+                showModal && <Modal setShowModal={setShowModal} activeID={activeID}/>
+            }
         </section>
     );
-};
+}
