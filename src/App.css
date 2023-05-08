@@ -33,7 +33,7 @@ section{
     top: 0;
     left: 0;
     background-color: #fff;
-    box-shadow: 3px 3px -8px 3px #ddd;
+    box-shadow: 3px 3px 8px 3px #ddd;
     z-index: 99;
 }
 
