@@ -73,7 +73,7 @@ export const Portfolio = () => {
                                         className="w-full h-full bg-black bg-opacity-20 absolute top-0 left-0 z-[5] rounded-[8px] hidden group-hover:block transition">
                                         <div className="flex items-center justify-center w-full h-full">
                                             <button onClick={() => showModalHandler(portfolio.id)}
-                                                    className="tracking-wide bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-[8px] py-2 px-4">See
+                                                    className="tracking-wide bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 text-white rounded-[8px] py-2 px-4">See
                                                 Details
                                             </button>
                                         </div>

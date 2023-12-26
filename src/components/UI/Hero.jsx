@@ -1,5 +1,6 @@
 import React from "react";
-import heroImag from "../../assets/images/hero.svg";
+// import heroImag from "../../assets/images/hero.svg";
+import heroImag from "../../assets/images/myDP.jpg";
 import CountUp from "react-countup";
 
 export const Hero = () => {
