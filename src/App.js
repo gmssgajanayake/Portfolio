@@ -19,10 +19,10 @@ function App() {
         <div>
             <Header/>
             <main>
-                <Hero></Hero>
-                <Service></Service>
-                <Portfolio></Portfolio>
-                <Contact></Contact>
+                <Hero/>
+                <Service/>
+                <Portfolio/>
+                <Contact/>
             </main>
             <Footer/>
         </div>
