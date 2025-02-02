@@ -10,6 +10,19 @@ import {Service} from "./components/UI/Service";
 import {Portfolio} from "./components/UI/Portfolio";
 import {Contact} from "./components/UI/Contact";
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBbf9ebC2PhZm8391x0PrZWTro-5Q_Ad-I",
+    authDomain: "my-portfolio-8903d.firebaseapp.com",
+    projectId: "my-portfolio-8903d",
+    storageBucket: "my-portfolio-8903d.firebasestorage.app",
+    messagingSenderId: "741484081440",
+    appId: "1:741484081440:web:d71083d47f902e1ddb6745",
+    measurementId: "G-FKTEPDX7BT"
+};
+
 
 function App() {
     useEffect(() => {
@@ -28,5 +41,8 @@ function App() {
         </div>
     );
 }
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 export default App;
